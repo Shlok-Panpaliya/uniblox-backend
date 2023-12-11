@@ -42,8 +42,6 @@ CORS(app, origins=['*'], methods=['GET', 'POST'],
      allow_headers=['Content-Type'])
 
 # API for getting user details.
-
-
 @app.route('/api/get-user-data', methods=['GET'])
 def get_user_details():
     try:
@@ -116,8 +114,6 @@ def get_user_details():
         }
 
 # API for adding items to cart of a user identified by their User ID.
-
-
 @app.route('/api/add-items-to-cart', methods=['POST'])
 def add_items_to_cart():
     try:
@@ -134,12 +130,6 @@ def add_items_to_cart():
 
         # get product from the products collection.
         product = products.find_one({"_id": ObjectId(product_id)})
-
-        # update stock of the item.
-        # products.update_one(
-        #     {"_id": ObjectId(product_id)},
-        #     {"$inc": {"stock": -1}}
-        # )
 
         # add product to the cart of the user.
         res = users.update_one(
@@ -170,8 +160,6 @@ def add_items_to_cart():
         }
 
 # API for getting all products.
-
-
 @app.route('/api/get-all-products', methods=['GET'])
 def get_all_products():
     try:
