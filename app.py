@@ -296,6 +296,13 @@ def complete_order():
         # get items from the cart of the user.
         items_in_cart = user['itemsInCart']
 
+        # check edge case if no items in cart.
+        if len(items_in_cart) == 0:
+            return {
+                "status_code": 500,
+                "message": "No items in cart."
+            }
+
         # store object ids of all items.
         item_ids = [item['_id'] for item in items_in_cart]
 
