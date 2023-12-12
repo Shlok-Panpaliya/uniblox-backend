@@ -1,3 +1,4 @@
+import os
 import traceback
 import uuid
 from flask import Flask, request
@@ -19,12 +20,11 @@ ca = certifi.where()
 client = MongoClient()
 
 # Mongo url for connection
-# Mongo_Url = os.getenv("MONGO_PRODUCTION")
-# print(Mongo_Url, "check mongo url")
+Mongo_Url = os.getenv("MONGO_PRODUCTION")
+print(Mongo_Url, "check mongo url")
 
 # connect using the connection string
-mongo_client = MongoClient(
-    "mongodb+srv://myAtlasDBUser:shlokp762@myatlasclusteredu.js7wlsy.mongodb.net/", tlsCAFile=ca)
+mongo_client = MongoClient(Mongo_Url, tlsCAFile=ca)
 
 # print(Mongo_Url)
 
